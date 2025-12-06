@@ -1,0 +1,55 @@
+{
+  "regulation_id": "d9d1c47f93df81a8",
+  "date_of_law": "2025-12-06",
+  "date_processed": "2025-12-06",
+  "time_processed": "14:40:10",
+  "total_risks_flagged": 5,
+  "risk_breakdown": {
+    "HIGH": 5,
+    "MEDIUM": 0,
+    "LOW": 0
+  },
+  "risks": [
+    {
+      "policy_id": "POL-001",
+      "severity": "HIGH",
+      "divergence_summary": "The internal policy is critically deficient, failing to address specific data retention limits for inactive users, requirements for backup deletion, and the fundamental mandate for explicit written consent prior to processing personal data.",
+      "conflicting_policy_excerpt": "Retain personal data only as long as needed, as defined in Data Retention Policy.",
+      "new_rule_excerpt": "1. Personal data must be permanently deleted after 12 months of user inactivity",
+      "recommendation": "Conduct an immediate, comprehensive audit and update of the company's Data Retention Policy and all related privacy policies to specifically address: (1) mandatory deletion after 12 months of user inactivity, (2) the 30-day timeframe for backup deletion, (3) the implementation of explicit written consent for all personal data processing, and (4) ensuring annual policy reviews."
+    },
+    {
+      "policy_id": "POL-002",
+      "severity": "HIGH",
+      "divergence_summary": "The internal policy defines 'Retention Period' as a minimum and provides a general definition of deletion, which lacks the specific maximum retention period for personal data linked to user inactivity and the timeframe for backup deletion mandated by the new regulation.",
+      "conflicting_policy_excerpt": "Retention Period — the minimum period data must be kept before being eligible for archiving or secure deletion.\nDeletion / Destruction — secure erasure of digital records or secure destruction of physical records once\nretention period ends or when appropriate.",
+      "new_rule_excerpt": "1. Personal data must be permanently deleted after 12 months of user inactivity\n4. Backup copies of deleted data must also be removed within 30 days",
+      "recommendation": "The legal team must immediately revise the internal policy to explicitly include a maximum retention period for personal data, mandating permanent deletion after 12 months of user inactivity, and add a requirement for backup copies of deleted data to be removed within 30 days."
+    },
+    {
+      "policy_id": "POL-003",
+      "severity": "HIGH",
+      "divergence_summary": "The internal policy's general 'retention period' for records does not explicitly address or mandate the new regulation's specific 12-month deletion requirement for personal data based on user inactivity.",
+      "conflicting_policy_excerpt": "After retention period expires (and no Legal / Contractual Hold), records must be securely deleted (digital) or securely destroyed (physical).",
+      "new_rule_excerpt": "Personal data must be permanently deleted after 12 months of user inactivity",
+      "recommendation": "The legal team must immediately revise the internal data retention policy to explicitly incorporate and define the 12-month deletion requirement for personal data of inactive users, and initiate a review of current data lifecycle management processes and technical capabilities for compliance."
+    },
+    {
+      "policy_id": "POL-004",
+      "severity": "HIGH",
+      "divergence_summary": "The internal policy permits suspending data deletion based on regulatory obligations to keep data. However, the new regulation introduces a mandatory deletion requirement for personal data after 12 months of user inactivity, which is a regulatory obligation to delete, directly conflicting with the policy's hold provision.",
+      "conflicting_policy_excerpt": "Legal / Contractual Hold — suspension of any archiving or deletion when data is required to be kept due to contract, audit, litigation, or regulatory obligations.",
+      "new_rule_excerpt": "Personal data must be permanently deleted after 12 months of user inactivity",
+      "recommendation": "The legal team must immediately revise the 'Legal / Contractual Hold' policy to explicitly state that mandatory regulatory deletion requirements, such as the 12-month inactivity rule for personal data, override any general retention obligations or holds. This revision must ensure that inactive personal data is permanently deleted as required by the new regulation, even if other regulatory obligations might otherwise suggest retention."
+    },
+    {
+      "policy_id": "POL-005",
+      "severity": "HIGH",
+      "divergence_summary": "The internal policy states that data under Legal Hold cannot be deleted until explicit release, while the new regulation mandates the permanent deletion of personal data after 12 months of user inactivity, creating a direct contradiction for personal data that meets both criteria.",
+      "conflicting_policy_excerpt": "Data under Legal Hold cannot be archived or deleted until explicit release.",
+      "new_rule_excerpt": "Personal data must be permanently deleted after 12 months of user inactivity",
+      "recommendation": "The legal team must immediately revise the internal policy regarding Legal Holds to explicitly state that legal holds do not override mandatory regulatory deletion requirements for personal data. The revised policy needs to define a clear process for identifying and prioritizing the permanent deletion of inactive personal data, even if it is subject to a legal hold, unless an explicit exception is provided within the new regulation itself."
+    }
+  ],
+  "recommendation": "URGENT: 5 high-priority conflicts require immediate legal review and policy updates."
+}

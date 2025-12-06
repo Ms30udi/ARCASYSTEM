@@ -1,0 +1,55 @@
+{
+  "regulation_id": "0110fc27bca910b3",
+  "date_of_law": "2025-12-05",
+  "date_processed": "2025-12-06",
+  "time_processed": "16:28:53",
+  "total_risks_flagged": 5,
+  "risk_breakdown": {
+    "HIGH": 5,
+    "MEDIUM": 0,
+    "LOW": 0
+  },
+  "risks": [
+    {
+      "policy_id": "POL-001",
+      "severity": "HIGH",
+      "divergence_summary": "The company's internal 'Policy Review & Governance Procedure' lacks specific requirements for the frequency and reporting of policy reviews. The new regulation mandates quarterly reviews for data protection and change management policies, with evidence submitted to the CNDP, creating a critical gap in the company's compliance framework.",
+      "conflicting_policy_excerpt": "Establish a structured process for reviewing, updating, approving, and versioning all internal policies — ensuring governance, accountability, and continuous alignment with business needs and regulatory requirements.",
+      "new_rule_excerpt": "All internal policies related to data protection and change management must be reviewed and updated at least quarterly with evidence of review submitted to CNDP.",
+      "recommendation": "Immediately update the 'MarocAgency — Policy Review & Governance Procedure' to explicitly include the mandatory quarterly review schedule for all data protection and change management related policies, along with the requirement to submit evidence of these reviews to the CNDP as per Article 8.3 of the new regulation. Ensure the updated policy has a revised effective date and is re-approved by the Executive Board/Compliance Manager."
+    },
+    {
+      "policy_id": "POL-002",
+      "severity": "HIGH",
+      "divergence_summary": "The internal \"Onboarding & Offboarding Procedures\" policy is critically deficient, lacking the detailed technical and operational specifications mandated by the new regulation for data security, access control (including the 2-hour access revocation on termination), encryption, logging, and incident response. Furthermore, the policy's current versioning and approval metadata do not demonstrate compliance with the mandatory quarterly review and update cycle required for data protection policies.",
+      "conflicting_policy_excerpt": "Version: 1.0\nEffective Date: 2025 - 12 - 03",
+      "new_rule_excerpt": "A l l  i n t e r n a l  p o l i c i e s  r e l a t e d  t o  d a t a  p r o t e c t i o n  a n d  c h a n g e  m a n a g e m e n t  m u s t  b e  r e v i e w e d  a n d  u p d a t e d  a t  l e a s t  q u a r t e r l y  w i t h  e v i d e n c e  o f  r e v i e w  s u b m i t t e d  t o  C N D P .",
+      "recommendation": "The legal team must immediately initiate a comprehensive revision of the \"MarocAgency — Onboarding & Offboarding Procedures\" policy. This revision must incorporate all specific security, encryption, access control (including the 2-hour access revocation for terminated employees), logging, and incident response requirements detailed in the new regulation. Additionally, the policy document itself must be updated to explicitly establish and document a mandatory quarterly review and update cycle, with defined procedures for submitting review evidence to CNDP, as required by Article 8.3."
+    },
+    {
+      "policy_id": "POL-003",
+      "severity": "HIGH",
+      "divergence_summary": "The company's internal policy mandates an annual review for policies, which directly contradicts the new regulation requiring quarterly reviews for data protection and change management policies, along with evidence submission to the CNDP.",
+      "conflicting_policy_excerpt": "The policy must be reviewed at least once per year, or when relevant laws/regulations change, or when MarocAgency’s services change.",
+      "new_rule_excerpt": "All internal policies related to data protection and change management must be reviewed and updated at least quarterly with evidence of review submitted to CNDP.",
+      "recommendation": "Immediately revise the internal policy's 'Policy Review & Revision' section to mandate quarterly reviews for all data protection and change management policies. Establish procedures to submit evidence of these reviews to the CNDP, and update the policy comprehensively to incorporate all specific requirements outlined in Articles 6 and 7 concerning security, encryption, access control, logging, incident response, and breach notification timelines."
+    },
+    {
+      "policy_id": "POL-004",
+      "severity": "HIGH",
+      "divergence_summary": "The internal policy does not specify a mandatory review frequency for data protection and change management policies, nor does it require submitting evidence of reviews to the CNDP, which are explicit quarterly requirements in the new regulation.",
+      "conflicting_policy_excerpt": "major changes reviewed by Executive Board.",
+      "new_rule_excerpt": "All internal policies related to data protection and change management must be reviewed and updated at least quarterly with evidence of review submitted to CNDP.",
+      "recommendation": "Immediately update the internal policy to include a specific section on the quarterly review and update requirements for all data protection and change management policies, clearly outlining the process for documenting and submitting evidence of these reviews to CNDP, as mandated by Article 8.3 of the new regulation."
+    },
+    {
+      "policy_id": "POL-005",
+      "severity": "HIGH",
+      "divergence_summary": "The company's internal policy, which relates to change management and data protection, lacks any provision for its own mandatory quarterly review and update, or the submission of review evidence to the CNDP, as explicitly required by the new regulation.",
+      "conflicting_policy_excerpt": "The provided internal policy excerpt (Section 4: 'Code Review & Version Control') contains no provisions regarding its own mandatory review and update frequency, nor the requirement to submit evidence of such review to a regulatory body.",
+      "new_rule_excerpt": "All internal policies related to data protection and change management must be reviewed and updated at least quarterly with evidence of review submitted to CNDP.",
+      "recommendation": "The legal team, in collaboration with IT and compliance departments, must immediately update the company’s overarching policy framework, including the 'Code Review & Version Control' policy, to explicitly incorporate a quarterly review and update cycle, and establish a process for submitting evidence of these reviews to the CNDP, ensuring full compliance with Article 8.3 of the new regulation."
+    }
+  ],
+  "recommendation": "URGENT: 5 high-priority conflicts require immediate legal review and policy updates."
+}

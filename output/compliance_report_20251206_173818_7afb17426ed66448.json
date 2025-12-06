@@ -1,0 +1,55 @@
+{
+  "regulation_id": "7afb17426ed66448",
+  "date_of_law": "2025-12-13",
+  "date_processed": "2025-12-06",
+  "time_processed": "17:38:18",
+  "total_risks_flagged": 5,
+  "risk_breakdown": {
+    "HIGH": 2,
+    "MEDIUM": 0,
+    "LOW": 3
+  },
+  "risks": [
+    {
+      "policy_id": "POL-001",
+      "severity": "LOW",
+      "divergence_summary": "The new regulation introduces a rule regarding employee contracts which is outside the scope of the provided internal policy excerpt. The internal policy focuses on data lifecycle management and secure disposal, while the new regulation's specific point on employee contracts does not conflict with any statement in the provided policy text.",
+      "conflicting_policy_excerpt": "",
+      "new_rule_excerpt": "",
+      "recommendation": "The legal team should conduct a comprehensive review of the full 'MOROCCO DIGITAL SERVICES REGULATORY FRAMEWORK Law No. 09-2025' against all relevant internal policies, including any existing HR policies concerning employment contracts and the complete data management policy, to identify all potential gaps or new requirements introduced by the regulation beyond the provided excerpts."
+    },
+    {
+      "policy_id": "POL-002",
+      "severity": "LOW",
+      "divergence_summary": "The provided excerpts from the internal policy and the new regulation do not present any direct conflict. The internal policy focuses on system access control principles, while the new regulation excerpt addresses employee contractual requirements and the regulation's overall scope.",
+      "conflicting_policy_excerpt": "N/A - No direct conflict found in the provided excerpts.",
+      "new_rule_excerpt": "N/A - No direct conflict found in the provided excerpts.",
+      "recommendation": "Review the full internal policy, especially any sections related to employee onboarding, HR, or prerequisites for system access, against the complete text of Law No. 09-2025 to ensure no implicit conflicts arise from the 'New employees don't have to sign contract' rule and the internal policy's application to 'employees'."
+    },
+    {
+      "policy_id": "POL-003",
+      "severity": "LOW",
+      "divergence_summary": "The new regulation introduces a rule stating that new employees don't have to sign contracts, a topic not addressed in the provided internal policy excerpt. However, this regulatory change triggers an ad-hoc review under the company's internal policy management framework.",
+      "conflicting_policy_excerpt": "N/A - The provided internal policy excerpt (sections on Scope and Review Cycle & Triggers) does not contain a direct statement regarding employee contracts that contradicts the new regulation.",
+      "new_rule_excerpt": "New employees don't have to sign contract",
+      "recommendation": "Conduct an immediate ad-hoc review of all company HR policies, employment contracts, and onboarding procedures, as specifically triggered by Section 3 ('Ad - hoc review: triggered by significant events — e.g. regulatory changes') of the internal policy. Ensure full compliance with the 'MOROCCO DIGITAL SERVICES REGULATORY FRAMEWORK Law No. 09-2025' regarding the non-mandatory nature of new employee contracts by its effective date of January 15, 2026."
+    },
+    {
+      "policy_id": "POL-004",
+      "severity": "HIGH",
+      "divergence_summary": "The internal policy mandates that new employees sign an employment/contract agreement, which directly contradicts the new regulation stating that new employees do not have to sign a contract.",
+      "conflicting_policy_excerpt": "Candidate signs employment/contract agreement and confidentiality/NDA agreement.",
+      "new_rule_excerpt": "New employees don't have to sign contract",
+      "recommendation": "The legal team must immediately review and revise the 'Onboarding Procedure' in the internal policy to remove the mandatory requirement for new employees to sign an employment/contract agreement, ensuring full compliance with Law No. 09-2025. This change should be communicated to HR and relevant departments before the effective date of January 15, 2026. Further clarification may be needed regarding the signing of confidentiality/NDA agreements if 'contract' in the regulation broadly encompasses all such agreements."
+    },
+    {
+      "policy_id": "POL-005",
+      "severity": "HIGH",
+      "divergence_summary": "The internal policy's scope includes the handling of internal documents such as contracts, while the new regulation directly contradicts the requirement for new employees to sign a contract.",
+      "conflicting_policy_excerpt": "internal documents (contracts, HR, financial)",
+      "new_rule_excerpt": "-New employees don't have to sign contract",
+      "recommendation": "The legal team must immediately revise all HR policies, hiring procedures, and internal documentation pertaining to employment contracts to align with the new regulation, specifically addressing the non-requirement for new employees to sign contracts. This may impact recruitment processes and legal frameworks for employee relations."
+    }
+  ],
+  "recommendation": "URGENT: 2 high-priority conflicts require immediate legal review and policy updates."
+}

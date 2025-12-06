@@ -1,0 +1,55 @@
+{
+  "regulation_id": "09a8b695cf4e35ae",
+  "date_of_law": "2025-12-05",
+  "date_processed": "2025-12-06",
+  "time_processed": "18:25:36",
+  "total_risks_flagged": 5,
+  "risk_breakdown": {
+    "HIGH": 4,
+    "MEDIUM": 1,
+    "LOW": 0
+  },
+  "risks": [
+    {
+      "policy_id": "POL-001",
+      "severity": "HIGH",
+      "divergence_summary": "The internal policy's change request process is significantly less comprehensive than the new regulation's mandatory change management requirements, lacking specific timelines for approval, a requirement for an Independent Technical Review Board, client notification standards, and explicit documentation retention periods.",
+      "conflicting_policy_excerpt": "3. Change Request Process\nAny proposed change must be submitted via a Change Request Form with: description, rationale, affected systems, rollback plan, risk assessment.",
+      "new_rule_excerpt": "2.1 Mandatory Change Approval Timelines\nAll infrastructure changes must receive written approval at least 72 hours before implementation. Emergency changes are permitted only for system outages affecting more than 50% of users or active security breaches.\n\n2.2 Independent Review Board\nOrganizations with more than 10 employees must establish an Independent Technical Review Board consisting of at least three members who are not directly involved in day-to-day operations. This board must review and approve all high-risk changes before implementation.\n\n2.3 Client Notification Standards\nClients must be notified at least 96 hours in advance of any planned maintenance or changes that may affect service availability, regardless of expected downtime duration.\n\n2.4 Change Documentation Retention\nAll change logs, including rollback procedures and risk assessments, must be retained for a minimum of 7 years and made available to regulatory authorities within 48 hours of request.",
+      "recommendation": "The legal team must initiate an immediate revision of the company's 'Change Request Process' policy to fully incorporate all mandatory requirements specified in Article 2 (Change Management Requirements) of Law No. 09-2025, particularly regarding approval timelines, the establishment of an Independent Technical Review Board, client notification standards, and a 7-year documentation retention period. This revision must be completed and implemented within 90 days of the effective date (January 15, 2026) to ensure compliance."
+    },
+    {
+      "policy_id": "POL-002",
+      "severity": "HIGH",
+      "divergence_summary": "The internal policy's high-level approach to updating security practices and communicating changes internally is insufficient and directly contradicts the new regulation's detailed requirements for formal change approval, independent review, client notification, and documentation retention.",
+      "conflicting_policy_excerpt": "Update coding standards and security practices accordingly. Communicate changes to the development team and require compliance.",
+      "new_rule_excerpt": "Organizations with more than 10 employees must establish an Independent Technical Review Board consisting of at least three members who are not directly involved in day-to-day operations. This board must review and approve all high-risk changes before implementation.",
+      "recommendation": "Immediately revise the internal policy to incorporate all requirements of Article 2 of the 'MOROCCO DIGITAL SERVICES REGULATORY FRAMEWORK', specifically establishing mandatory change approval timelines, an Independent Technical Review Board, client notification standards, and change documentation retention policies."
+    },
+    {
+      "policy_id": "POL-003",
+      "severity": "HIGH",
+      "divergence_summary": "The internal policy directly conflicts with the new regulation regarding the required independent approval body for high-risk changes, the specific minimum client notification timeline, and the mandatory retention period for change documentation.",
+      "conflicting_policy_excerpt": "high-risk changes require additional approval (CTO / Security Manager).",
+      "new_rule_excerpt": "Organizations with more than 10 employees must establish an Independent Technical Review Board consisting of at least three members who are not directly involved in day-to-day operations. This board must review and approve all high-risk changes before implementation.",
+      "recommendation": "The legal team must immediately revise the internal change management policy to: 1) Establish an Independent Technical Review Board for high-risk changes. 2) Mandate a 96-hour advance client notification for all service-affecting changes. 3) Enforce a minimum 7-year retention for all change logs, rollback procedures, and risk assessments. Additionally, implement a 72-hour approval lead time for all infrastructure changes."
+    },
+    {
+      "policy_id": "POL-004",
+      "severity": "HIGH",
+      "divergence_summary": "The company's internal policy provides a high-level purpose for change management but entirely lacks the specific, mandatory details required by the new regulation concerning change approval timelines, independent review boards, client notification standards, documentation retention, and data residency.",
+      "conflicting_policy_excerpt": "Establish controlled processes for all changes to infrastructure, systems, applications, and deployments — ensuring stability, traceability, security, and preventing unplanned disruptions or data exposure.",
+      "new_rule_excerpt": "All infrastructure changes must receive written approval at least 72 hours before implementation.",
+      "recommendation": "The legal team must immediately collaborate with IT and operations to comprehensively revise the 'MarocAgency Change Management & Deployment Policy' to explicitly incorporate all mandatory requirements of the MOROCCO DIGITAL SERVICES REGULATORY FRAMEWORK, particularly Articles 2.1, 2.2, 2.3, 2.4, and 3.1, ensuring full compliance within the 90-day window from January 15, 2026."
+    },
+    {
+      "policy_id": "POL-005",
+      "severity": "MEDIUM",
+      "divergence_summary": "The internal policy mandates an ad-hoc review for regulatory changes but lacks specific timelines for completing policy updates and operational implementations, which could prevent meeting the new regulation's strict 90-day compliance deadline.",
+      "conflicting_policy_excerpt": "Ad ‑ hoc review: triggered by significant events — e.g. regulatory changes, security incidents, service offerings",
+      "new_rule_excerpt": "Organizations must comply within 90 days of the effective date.",
+      "recommendation": "Evaluate current ad-hoc review-to-implementation timelines to ensure they can meet the 90-day compliance deadline of the new regulation. Revise the internal policy or establish an expedited procedure to ensure all necessary policy updates and operational changes derived from regulatory reviews are implemented within statutory timelines. Additionally, ensure all relevant internal policies (e.g., data retention, access control, development guidelines) are updated to incorporate all specific requirements of the new regulation, such as change management procedures, client notification standards, documentation retention, and data residency."
+    }
+  ],
+  "recommendation": "URGENT: 4 high-priority conflicts require immediate legal review and policy updates."
+}

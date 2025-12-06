@@ -1,0 +1,55 @@
+{
+  "regulation_id": "4e1ec9a9cd9d6fd4",
+  "date_of_law": "2025-12-05",
+  "date_processed": "2025-12-06",
+  "time_processed": "18:13:14",
+  "total_risks_flagged": 5,
+  "risk_breakdown": {
+    "HIGH": 0,
+    "MEDIUM": 2,
+    "LOW": 3
+  },
+  "risks": [
+    {
+      "policy_id": "POL-001",
+      "severity": "MEDIUM",
+      "divergence_summary": "The internal policy broadly mentions 'compliance' for data management, but the new regulation establishes a specific and mandatory legal framework for data protection applicable to MarocAgency. The internal policy needs review to ensure its 'compliance' principles align with the new legal obligations.",
+      "conflicting_policy_excerpt": "compliance, data lifecycle management, and secure disposal when data is no longer needed.",
+      "new_rule_excerpt": "This regulation applies to all digital service providers, web agencies, software development companies, and technology consultancies operating within Morocco or serving Moroccan clients. Organizations must comply within 90 days of the effective date.",
+      "recommendation": "The legal team must conduct a comprehensive review of the entire internal policy on data management and disposal against all provisions of Law No. 09-2025 to identify specific gaps, ensure alignment, and implement necessary updates to achieve full compliance before the April 15, 2026 deadline."
+    },
+    {
+      "policy_id": "POL-002",
+      "severity": "LOW",
+      "divergence_summary": "There is no direct conflict. The internal policy details an access control mechanism (RBAC), while the provided excerpt of the new regulation defines its scope and application without specifying particular access control methods.",
+      "conflicting_policy_excerpt": "",
+      "new_rule_excerpt": "",
+      "recommendation": "Conduct a full review of Law No. 09-2025 to identify any specific access control or data protection requirements not detailed in the provided excerpt, ensuring the current RBAC policy aligns with and sufficiently meets all mandates of the new regulation."
+    },
+    {
+      "policy_id": "POL-003",
+      "severity": "MEDIUM",
+      "divergence_summary": "The internal policy triggers an ad-hoc review upon regulatory changes, but it lacks specific guidance to ensure the review and subsequent policy updates are completed proactively to meet external compliance deadlines (90 days from effective date), potentially leading to non-compliance.",
+      "conflicting_policy_excerpt": "Ad ‑ hoc review: triggered by significant events — e.g. regulatory changes",
+      "new_rule_excerpt": "Organizations must comply within 90 days of the effective date.",
+      "recommendation": "The legal team must immediately initiate the ad-hoc review process for Law No. 09-2025. Additionally, the internal policy's 'Review Cycle & Triggers' section should be updated to explicitly state that ad-hoc reviews for regulatory changes must be initiated sufficiently in advance of any mandated compliance deadlines to ensure timely implementation of required updates and avoid non-compliance."
+    },
+    {
+      "policy_id": "POL-004",
+      "severity": "LOW",
+      "divergence_summary": "The internal policy's scope defines the types of data it covers, while the new regulation's Article 1 defines the types of organizations to which it applies. These are distinct aspects of scope and do not present a conflict in the provided excerpts.",
+      "conflicting_policy_excerpt": "",
+      "new_rule_excerpt": "",
+      "recommendation": "While these specific excerpts do not reveal a conflict, MarocAgency must confirm its classification as a 'digital service provider' or 'web agency' under Article 1. Following this, the legal team should perform a comprehensive gap analysis, comparing all relevant internal data protection policies and procedures against the full text of Law No. 09-2025 to ensure complete compliance by the January 15, 2026 effective date."
+    },
+    {
+      "policy_id": "POL-005",
+      "severity": "LOW",
+      "divergence_summary": "There is no direct textual conflict between the internal policy's specified internal audit frequency and scope, and the new regulation's applicability criteria and general compliance deadline. The internal policy outlines how the company internally manages compliance, while the regulation introduces new external compliance requirements.",
+      "conflicting_policy_excerpt": "",
+      "new_rule_excerpt": "",
+      "recommendation": "The legal team should conduct a comprehensive review of the full text of Law No. 09-2025 to identify all specific requirements it imposes on digital service providers, particularly concerning data protection, access control, and other areas covered by the internal audit policy. This review is essential to ensure that the company's current practices and internal audits are sufficient to achieve and maintain compliance with the new Moroccan regulation by the effective date plus 90 days."
+    }
+  ],
+  "recommendation": "ACTION REQUIRED: 2 medium-priority conflicts need review within 30 days."
+}
