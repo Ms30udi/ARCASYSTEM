@@ -181,7 +181,7 @@ function Analysis() {
           <img 
             src="/images/lexia_Logo.png" 
             alt="Lexia Logo" 
-            className="h-16 transition-transform duration-500 ease-in-out"
+            className="ml-10 h-20 transition-transform duration-500 ease-in-out cursor-pointer"
             style={{ transformStyle: 'preserve-3d' }}
             onMouseEnter={(e) => e.currentTarget.style.transform = 'rotateY(45deg)'}
             onMouseLeave={(e) => e.currentTarget.style.transform = 'rotateY(0deg)'}

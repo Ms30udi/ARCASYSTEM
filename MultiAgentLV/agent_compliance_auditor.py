@@ -1,6 +1,7 @@
 import google.generativeai as genai
 import os
 import json
+import time
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -10,7 +11,7 @@ load_dotenv()
 class ComplianceAuditorAgent:
     """
     Agent 2: Compliance Auditor
-    Analyzes each policy excerpt and determines conflict severity
+    Analyzes each policy excerpt and determines conflict severity with maximum consistency
     """
     
     def __init__(self, gemini_api_key=None):
@@ -20,12 +21,26 @@ class ComplianceAuditorAgent:
             raise ValueError("Please provide GOOGLE_API_KEY in .env file!")
         
         genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel('gemini-2.5-flash')
-        print("✅ Compliance Auditor Agent initialized")
+        
+        # Configure generation with maximum determinism
+        self.generation_config = {
+            "temperature": 0.0,              # Minimum randomness
+            "top_p": 0.1,                    # Narrow token selection
+            "top_k": 1,                      # Most deterministic setting
+            "max_output_tokens": 4096,
+            "response_mime_type": "application/json"
+        }
+        
+        # Use gemini-2.5-flash (1500 requests/day quota)
+        self.model = genai.GenerativeModel(
+            model_name='gemini-2.5-flash',
+            generation_config=self.generation_config
+        )
+        print("✅ Compliance Auditor Agent initialized (Deterministic Mode: temp=0.0)")
     
     def analyze_single_policy(self, policy_excerpt, new_regulation_text, policy_id):
         """
-        Analyze one policy excerpt against the new regulation
+        Analyze one policy excerpt against the new regulation with maximum consistency
         
         Returns:
             dict with severity, summary, excerpts, and recommendation
@@ -43,9 +58,9 @@ class ComplianceAuditorAgent:
 Compare these two texts carefully and determine:
 
 1. **Severity Level**: Is there a conflict? Rate it as:
-   - HIGH: Direct contradiction, immediate action required
-   - MEDIUM: Potential conflict, needs review
-   - LOW: Minor discrepancy or no conflict
+   - HIGH: Direct contradiction, immediate legal action required, compliance at risk
+   - MEDIUM: Potential conflict, operational changes needed, review required
+   - LOW: Minor discrepancy, no immediate legal risk, monitoring sufficient
 
 2. **Divergence Summary**: In 1-2 sentences, explain the nature of the conflict (if any)
 
@@ -55,7 +70,12 @@ Compare these two texts carefully and determine:
 
 5. **Recommendation**: Provide a clear action item for the legal team
 
-Respond ONLY with a valid JSON object in this exact format:
+CRITICAL: Be extremely consistent in your analysis. Always use the same severity criteria:
+- HIGH = Legal compliance violated, immediate action mandatory
+- MEDIUM = Operational impact, policy update recommended
+- LOW = Minor gap, monitoring sufficient
+
+Respond ONLY with a valid JSON object in this exact format (no markdown, no extra text):
 {{
     "severity": "HIGH|MEDIUM|LOW",
     "divergence_summary": "brief explanation",
@@ -65,37 +85,89 @@ Respond ONLY with a valid JSON object in this exact format:
 }}
 """
         
-        try:
-            response = self.model.generate_content(prompt)
-            response_text = response.text.strip()
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                response = self.model.generate_content(prompt)
+                response_text = response.text.strip()
+                
+                # Clean markdown code blocks
+                response_text = response_text.replace("```", "")
+                response_text = response_text.replace("```", "")
+                response_text = response_text.strip()
+                
+                # Parse JSON
+                analysis = json.loads(response_text)
+                
+                # Validate required fields
+                required_fields = ['severity', 'divergence_summary', 'conflicting_policy_excerpt', 
+                                 'new_rule_excerpt', 'recommendation']
+                for field in required_fields:
+                    if field not in analysis:
+                        raise ValueError(f"Missing required field: {field}")
+                
+                # Validate and normalize severity
+                severity = analysis['severity'].upper()
+                if severity not in ['HIGH', 'MEDIUM', 'LOW']:
+                    print(f"⚠️  Invalid severity '{severity}' for {policy_id}, defaulting to MEDIUM")
+                    severity = 'MEDIUM'
+                analysis['severity'] = severity
+                
+                analysis['policy_id'] = policy_id
+                return analysis
+                
+            except json.JSONDecodeError as e:
+                print(f"⚠️  JSON parsing error for {policy_id} (Attempt {attempt + 1}/{max_retries})")
+                if attempt < max_retries - 1:
+                    time.sleep(2)
+                    continue
+                else:
+                    return {
+                        "policy_id": policy_id,
+                        "severity": "MEDIUM",
+                        "divergence_summary": "Analysis failed - manual review required",
+                        "conflicting_policy_excerpt": policy_excerpt[:200],
+                        "new_rule_excerpt": new_regulation_text[:200],
+                        "recommendation": "Manual legal review required due to parsing error"
+                    }
             
-            # Clean markdown code blocks
-            response_text = response_text.replace("```json", "")
-            response_text = response_text.replace("```", "")
-            response_text = response_text.strip()
-            
-            # Parse JSON
-            analysis = json.loads(response_text)
-            analysis['policy_id'] = policy_id
-            
-            return analysis
-            
-        except json.JSONDecodeError as e:
-            print(f"⚠️  JSON parsing error for {policy_id}: {e}")
-            print(f"Raw response: {response.text[:200]}...")
-            
-            return {
-                "policy_id": policy_id,
-                "severity": "MEDIUM",
-                "divergence_summary": "Analysis failed - manual review required",
-                "conflicting_policy_excerpt": policy_excerpt[:200],
-                "new_rule_excerpt": new_regulation_text[:200],
-                "recommendation": "Manual legal review required due to analysis error"
-            }
+            except Exception as e:
+                error_str = str(e)
+                
+                # Handle rate limiting
+                if "429" in error_str or "quota" in error_str.lower():
+                    print(f"⚠️  Rate limit hit for {policy_id} (Attempt {attempt + 1}/{max_retries})")
+                    if attempt < max_retries - 1:
+                        wait_time = 10
+                        print(f"   Waiting {wait_time} seconds...")
+                        time.sleep(wait_time)
+                        continue
+                    else:
+                        return {
+                            "policy_id": policy_id,
+                            "severity": "HIGH",
+                            "divergence_summary": "API quota exceeded - analysis incomplete",
+                            "conflicting_policy_excerpt": policy_excerpt[:200],
+                            "new_rule_excerpt": new_regulation_text[:200],
+                            "recommendation": "Retry analysis after quota reset or upgrade API plan"
+                        }
+                
+                # Other errors
+                print(f"❌ Error analyzing {policy_id} (Attempt {attempt + 1}/{max_retries}): {error_str[:100]}")
+                if attempt < max_retries - 1:
+                    time.sleep(2)
+                    continue
+                else:
+                    return {
+                        "policy_id": policy_id,
+                        "severity": "HIGH",
+                        "divergence_summary": f"Analysis error: {error_str[:100]}",
+                        "conflicting_policy_excerpt": policy_excerpt[:200],
+                        "new_rule_excerpt": new_regulation_text[:200],
+                        "recommendation": "Technical error - retry analysis"
+                    }
         
-        except Exception as e:
-            print(f"❌ Error analyzing {policy_id}: {e}")
-            return None
+        return None
 
     def analyze(self, policy_results, new_regulation_text):
         """
@@ -106,7 +178,7 @@ Respond ONLY with a valid JSON object in this exact format:
             new_regulation_text: The new regulation text
         
         Returns:
-            List of analysis results with risk assessments
+            List of analysis results with risk assessments (sorted by severity)
         """
         print("\n" + "="*60)
         print("⚖️  COMPLIANCE AUDITOR AGENT - Starting Analysis")
@@ -133,6 +205,10 @@ Respond ONLY with a valid JSON object in this exact format:
                 
                 print(f"    ✅ Severity: {analysis['severity']}")
                 print(f"    📝 {analysis['divergence_summary'][:80]}...")
+        
+        # Sort by severity for consistent ordering (HIGH → MEDIUM → LOW)
+        severity_order = {'HIGH': 0, 'MEDIUM': 1, 'LOW': 2}
+        analyses.sort(key=lambda x: severity_order.get(x['severity'], 3))
         
         print(f"\n✅ Completed analysis of all policies")
         print(f"   HIGH risks: {sum(1 for a in analyses if a['severity'] == 'HIGH')}")

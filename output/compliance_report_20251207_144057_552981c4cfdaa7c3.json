@@ -1,0 +1,55 @@
+{
+  "regulation_id": "552981c4cfdaa7c3",
+  "date_of_law": "2025-12-11",
+  "date_processed": "2025-12-07",
+  "time_processed": "14:40:57",
+  "total_risks_flagged": 5,
+  "risk_breakdown": {
+    "HIGH": 5,
+    "MEDIUM": 0,
+    "LOW": 0
+  },
+  "risks": [
+    {
+      "policy_id": "POL-001",
+      "severity": "HIGH",
+      "divergence_summary": "Analysis error: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateCon",
+      "conflicting_policy_excerpt": "MarocAgency — Policy\nReview & Governance\nProcedure\nVersion: 1.0\nEffective Date: 2025 ‑ 12 ‑ 03\nApproved by: Executive Board / Compliance Manager\n1. Purpose\nEstablish a structured process for reviewing",
+      "new_rule_excerpt": "A r t i c l e  6 :  S e c u r i t y  a n d  E n c r y p t i o n  S t a n d a r d s\n6 . 1  M i n i m u m  E n c r y p t i o n  R e q u i r e m e n t s\nA l l  p e r s o n a l  d a t a  m u s t  b e  e n",
+      "recommendation": "Technical error - retry analysis"
+    },
+    {
+      "policy_id": "POL-002",
+      "severity": "HIGH",
+      "divergence_summary": "Analysis error: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateCon",
+      "conflicting_policy_excerpt": "MarocAgency — Onboarding\n& Offboarding Procedures\nVersion: 1.0\nEffective Date: 2025 ‑ 12 ‑ 03\nApproved by: HR / Operations Manager\n1. Purpose\nDefine standard procedures for securely and consistently o",
+      "new_rule_excerpt": "A r t i c l e  6 :  S e c u r i t y  a n d  E n c r y p t i o n  S t a n d a r d s\n6 . 1  M i n i m u m  E n c r y p t i o n  R e q u i r e m e n t s\nA l l  p e r s o n a l  d a t a  m u s t  b e  e n",
+      "recommendation": "Technical error - retry analysis"
+    },
+    {
+      "policy_id": "POL-003",
+      "severity": "HIGH",
+      "divergence_summary": "Analysis error: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateCon",
+      "conflicting_policy_excerpt": "report any irregularities.\n8. Policy Review & Revision\nThe policy must be reviewed at least once per year, or when relevant laws/regulations change, or when\nMarocAgency’s services change.\nMaintain ver",
+      "new_rule_excerpt": "A r t i c l e  6 :  S e c u r i t y  a n d  E n c r y p t i o n  S t a n d a r d s\n6 . 1  M i n i m u m  E n c r y p t i o n  R e q u i r e m e n t s\nA l l  p e r s o n a l  d a t a  m u s t  b e  e n",
+      "recommendation": "Technical error - retry analysis"
+    },
+    {
+      "policy_id": "POL-004",
+      "severity": "HIGH",
+      "divergence_summary": "Analysis error: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateCon",
+      "conflicting_policy_excerpt": "major changes reviewed by Executive Board.\n4. Versioning & Archiving: Assign new version number & effective date; archive previous version; record change\nlog (what changed, why, who approved).\n5. Comm",
+      "new_rule_excerpt": "A r t i c l e  6 :  S e c u r i t y  a n d  E n c r y p t i o n  S t a n d a r d s\n6 . 1  M i n i m u m  E n c r y p t i o n  R e q u i r e m e n t s\nA l l  p e r s o n a l  d a t a  m u s t  b e  e n",
+      "recommendation": "Technical error - retry analysis"
+    },
+    {
+      "policy_id": "POL-005",
+      "severity": "HIGH",
+      "divergence_summary": "Analysis error: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateCon",
+      "conflicting_policy_excerpt": "4. Code Review & Version Control\nAll code changes merging to main / master / production branches must undergo peer code review.\nReview must include security assessment, code quality, compliance with s",
+      "new_rule_excerpt": "A r t i c l e  6 :  S e c u r i t y  a n d  E n c r y p t i o n  S t a n d a r d s\n6 . 1  M i n i m u m  E n c r y p t i o n  R e q u i r e m e n t s\nA l l  p e r s o n a l  d a t a  m u s t  b e  e n",
+      "recommendation": "Technical error - retry analysis"
+    }
+  ],
+  "recommendation": "URGENT: 5 high-priority conflicts require immediate legal review and policy updates."
+}
