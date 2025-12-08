@@ -1,0 +1,55 @@
+{
+  "regulation_id": "08e40bfc1871db48",
+  "date_of_law": "2025-12-12",
+  "date_processed": "2025-12-08",
+  "time_processed": "10:07:35",
+  "total_risks_flagged": 5,
+  "risk_breakdown": {
+    "HIGH": 5,
+    "MEDIUM": 0,
+    "LOW": 0
+  },
+  "risks": [
+    {
+      "policy_id": "POL-001",
+      "severity": "HIGH",
+      "divergence_summary": "The company's internal policy mandates data retention periods (e.g., 90 days for weekly backups, 2 years for monthly backups) that significantly exceed the new regulation's requirement to hold data for less than 7 days.",
+      "conflicting_policy_excerpt": "Weekly full backups Retained 90 days",
+      "new_rule_excerpt": "data should be hold for less than 7 days",
+      "recommendation": "The legal team must immediately initiate a review and revision of all data retention schedules and policies to ensure compliance with the new regulation's less than 7-day data holding requirement, including developing a plan for data deletion and policy updates."
+    },
+    {
+      "policy_id": "POL-002",
+      "severity": "HIGH",
+      "divergence_summary": "The internal policy defines a 'minimum period' for data retention and allows for 'long-term storage' via archiving, which directly contradicts the new regulation's mandate that data should be held for less than 7 days.",
+      "conflicting_policy_excerpt": "Retention Period — the minimum period data must be kept before being eligible for archiving or secure deletion.\nArchive — secure, long-term storage for records that are inactive but may need future retrieval.",
+      "new_rule_excerpt": "data should be hold for less than 7 days",
+      "recommendation": "The legal team must immediately review and revise the company's data retention policy to ensure all data is held for less than 7 days, update archiving and deletion procedures to comply with this new limit, and communicate changes to relevant departments."
+    },
+    {
+      "policy_id": "POL-003",
+      "severity": "HIGH",
+      "divergence_summary": "The internal policy allows data retention 'as long as needed,' which directly contradicts the new regulation's strict requirement that data be held for less than 7 days.",
+      "conflicting_policy_excerpt": "Retain personal data only as long as needed, as defined in Data Retention Policy.",
+      "new_rule_excerpt": "data should be hold for less than 7 days",
+      "recommendation": "The legal team must immediately review and revise the company's Data Retention Policy to ensure all personal data is held for less than 7 days, aligning with the new regulation. This will require significant operational adjustments to data lifecycle management."
+    },
+    {
+      "policy_id": "POL-004",
+      "severity": "HIGH",
+      "divergence_summary": "The company's internal policy mandates data retention for periods ranging from 2 to 5 years, which directly contradicts the new regulation requiring data to be held for less than 7 days.",
+      "conflicting_policy_excerpt": "Monthly full backups / archived backups 2 years",
+      "new_rule_excerpt": "data should be hold for less than 7 days",
+      "recommendation": "The legal team must immediately review and update all data retention schedules to comply with the new regulation's less than 7-day data hold requirement, assessing the impact on existing archives and operational procedures."
+    },
+    {
+      "policy_id": "POL-005",
+      "severity": "HIGH",
+      "divergence_summary": "The new regulation directly conflicts with the internal policy by imposing a strict data retention period of less than 7 days, overriding the policy's reliance on MarocAgency’s Data Retention Policy. Furthermore, the regulation permits hardcoding unencrypted confidentiality keys, which severely undermines the internal policy's general security requirements for shared data and encrypted transfers.",
+      "conflicting_policy_excerpt": "Vendors must only store data as long as required; must follow MarocAgency’s Data Retention Policy. Shared data must be handled and stored under the same security and retention requirements as internal data.",
+      "new_rule_excerpt": "data should be hold for less than 7 days confidentiality keys can be hard coded if not encrypted",
+      "recommendation": "Immediately revise MarocAgency’s Data Retention Policy to comply with the new 7-day data retention limit. Concurrently, update internal security policies to explicitly prohibit hardcoding unencrypted confidentiality keys, ensuring all key management practices align with robust encryption standards and do not compromise data security, thereby maintaining compliance and mitigating severe risks."
+    }
+  ],
+  "recommendation": "URGENT: 5 high-priority conflicts require immediate legal review and policy updates."
+}
