@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 function Analysis() {
   const navigate = useNavigate()
-  const [activeTab, setActiveTab] = useState('text')
+  const [activeTab, setActiveTab] = useState('manual')
   const [regulationText, setRegulationText] = useState('')
   const [dateOfLaw, setDateOfLaw] = useState('')
   const [pdfFile, setPdfFile] = useState(null)
@@ -141,7 +141,7 @@ function Analysis() {
 
   return (
     <div 
-      className="min-h-screen overflow-x-hidden" 
+      className="min-h-screen overflow-x-hidden flex flex-col" 
       style={{ 
         backgroundColor: '#e6dfd7',
         scrollBehavior: 'smooth'
@@ -149,24 +149,29 @@ function Analysis() {
     >
       {/* Custom scrollbar styles */}
       <style>{`
-        /* Hide scrollbar for Chrome, Safari and Opera */
         ::-webkit-scrollbar {
           display: none;
         }
         
-        /* Hide scrollbar for IE, Edge and Firefox */
         body {
           -ms-overflow-style: none;
           scrollbar-width: none;
         }
         
-        /* Smooth scroll */
         html {
           scroll-behavior: smooth;
         }
+
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+        
+        .animate-spin-slow {
+          animation: spin 3s linear infinite;
+        }
       `}</style>
 
-      {/* Transparent Header */}
+      {/* Header */}
       <header 
         className="flex justify-between items-center px-12 py-4 transition-all duration-700 ease-out"
         style={{
@@ -188,339 +193,285 @@ function Analysis() {
           />
         </div>
 
-        {result && (
-          <div 
-            className="flex gap-3 transition-all duration-500 ease-out"
-            style={{
-              opacity: isPageLoaded ? 1 : 0,
-              transform: isPageLoaded ? 'translateX(0)' : 'translateX(50px)'
-            }}
+        <div className="flex items-center gap-4">
+          <button
+            onClick={() => navigate('/')}
+            className="flex items-center gap-2 px-6 py-2 border-2 border-black rounded-none transition-all duration-300 hover:bg-black hover:text-white cursor-pointer group"
+            style={{ fontFamily: "'Cooper BT', serif" }}
           >
-            <button
-              onClick={handleViewJSON}
-              className="flex items-center gap-2 px-6 py-2 bg-black rounded-full transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl cursor-pointer"
-            >
-              <img 
-                src="/images/lexia_icon.png" 
-                alt="Icon" 
-                className="h-5 w-5"
-              />
-              <span 
-                style={{ color: '#c1a673', fontFamily: "'Cooper BT', serif" }} 
-                className="text-base font-semibold"
-              >
-                View JSON
-              </span>
-            </button>
-            
-            <button
-              onClick={handleExportJSON}
-              className="flex items-center gap-2 px-6 py-2 bg-black rounded-full transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl cursor-pointer"
-            >
-              <img 
-                src="/images/lexia_icon.png" 
-                alt="Icon" 
-                className="h-5 w-5"
-              />
-              <span 
-                style={{ color: '#c1a673', fontFamily: "'Cooper BT', serif" }} 
-                className="text-base font-semibold"
-              >
-                Export JSON
-              </span>
-            </button>
-          </div>
-        )}
-      </header>
+            <span className="text-sm">←</span>
+            <span className="text-sm group-hover:text-white">RETURN HOME</span>
+          </button>
 
-      {/* Hero Section */}
-      <section 
-        className="max-w-7xl mx-auto px-12 py-8 transition-all duration-1000 ease-out"
-        style={{
-          opacity: isPageLoaded ? 1 : 0,
-          transform: isPageLoaded ? 'scale(1)' : 'scale(0.95)',
-          transitionDelay: '0.1s'
-        }}
-      >
-        <div className="bg-gradient-to-r from-white to-gray-50 rounded-3xl shadow-2xl overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div className="p-12">
-              <h1 
-                className="text-5xl font-bold leading-tight mb-4"
-                style={{ fontFamily: "'Cooper BT', serif", color: '#c1a673' }}
-              >
-                Regulatory Compliance Analysis
-              </h1>
-              
-              <p 
-                className="text-xl text-gray-700 leading-relaxed mb-6"
-                style={{ fontFamily: "'Cooper BT', serif" }}
-              >
-                Upload your regulation document and let our AI agents analyze potential conflicts with your internal policies in seconds.
-              </p>
-              
-              <div className="flex items-center gap-4">
-                <div className="flex items-center gap-2">
-                  <span className="text-3xl">⚡</span>
-                  <span className="text-base font-semibold text-gray-700" style={{ fontFamily: "'Cooper BT', serif" }}>
-                    Fast Analysis
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-3xl">🎯</span>
-                  <span className="text-base font-semibold text-gray-700" style={{ fontFamily: "'Cooper BT', serif" }}>
-                    Accurate Results
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-center p-8" style={{ backgroundColor: '#c1a673' }}>
-              <img 
-                src="/images/hero_pic3.png" 
-                alt="Analysis Hero" 
-                className="w-full max-w-md object-contain drop-shadow-2xl"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-12 py-8">
-        {/* Input Section */}
-        <div 
-          className="bg-white rounded-2xl shadow-lg p-6 mb-8 transition-all duration-1000 ease-out"
-          style={{
-            opacity: isPageLoaded ? 1 : 0,
-            transform: isPageLoaded ? 'translateY(0)' : 'translateY(50px)',
-            transitionDelay: '0.2s'
-          }}
-        >
-          <div className="flex items-center gap-3 mb-6">
-            <img 
-              src="/images/lexia_icon.png" 
-              alt="Icon" 
-              className="h-10 w-10"
-            />
-            <h2 
-              className="text-3xl font-bold"
-              style={{ fontFamily: "'Cooper BT', serif", color: '#c1a673' }}
-            >
-              Submit New Regulation
-            </h2>
-          </div>
-
-          <div className="flex space-x-4 mb-6 border-b-2 border-gray-200">
-            <button
-              onClick={() => setActiveTab('text')}
-              className={`pb-2 px-4 font-semibold transition-all duration-300 ${
-                activeTab === 'text'
-                  ? 'border-b-4 border-black'
-                  : 'text-gray-500 hover:text-black'
-              }`}
-              style={{ 
-                fontFamily: "'Cooper BT', serif",
-                color: activeTab === 'text' ? '#c1a673' : undefined
-              }}
-            >
-              ✍️ Text Input
-            </button>
-            <button
-              onClick={() => setActiveTab('pdf')}
-              className={`pb-2 px-4 font-semibold transition-all duration-300 ${
-                activeTab === 'pdf'
-                  ? 'border-b-4 border-black'
-                  : 'text-gray-500 hover:text-black'
-              }`}
-              style={{ 
-                fontFamily: "'Cooper BT', serif",
-                color: activeTab === 'pdf' ? '#c1a673' : undefined
-              }}
-            >
-              📎 PDF Upload
-            </button>
-          </div>
-
-          {activeTab === 'text' && (
-            <form onSubmit={handleTextSubmit} className="space-y-4">
-              <div>
-                <label 
-                  className="block text-base font-semibold mb-2 flex items-center gap-2"
-                  style={{ fontFamily: "'Cooper BT', serif", color: '#c1a673' }}
-                >
-                  <span>📄</span> Regulation Text *
-                </label>
-                <div className="relative">
-                  <textarea
-                    value={regulationText}
-                    onChange={(e) => setRegulationText(e.target.value)}
-                    className="w-full px-5 py-3 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-black focus:border-black transition-all resize-none"
-                    style={{ fontFamily: "'Cooper BT', serif", backgroundColor: '#fafafa' }}
-                    rows="10"
-                    placeholder="Enter the full text of the regulation you want to analyze..."
-                    required
-                    minLength={50}
-                    maxLength={10000}
-                  />
-                  <div className="absolute bottom-3 right-3 bg-white px-3 py-1 rounded-full shadow-sm">
-                    <p className="text-xs font-semibold" style={{ color: '#c1a673' }}>
-                      {regulationText.length} / 2,000
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <label 
-                  className="block text-base font-semibold mb-2 flex items-center gap-2"
-                  style={{ fontFamily: "'Cooper BT', serif", color: '#c1a673' }}
-                >
-                  <span>📅</span> Effective Date (Optional)
-                </label>
-                <input
-                  type="date"
-                  value={dateOfLaw}
-                  onChange={(e) => setDateOfLaw(e.target.value)}
-                  className="w-full px-5 py-3 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-black focus:border-black transition-all"
-                  style={{ fontFamily: "'Cooper BT', serif", backgroundColor: '#fafafa' }}
-                />
-              </div>
-
+          {result && (
+            <>
               <button
-                type="submit"
-                disabled={loading}
-                className="group w-full flex items-center justify-center gap-3 px-8 py-4 bg-black rounded-full shadow-lg cursor-pointer transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl disabled:bg-gray-400 disabled:cursor-not-allowed"
+                onClick={handleViewJSON}
+                className="flex items-center gap-2 px-6 py-2 bg-black rounded-full transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl cursor-pointer"
               >
                 <img 
                   src="/images/lexia_icon.png" 
                   alt="Icon" 
-                  className="h-6 w-6 transition-transform duration-300 ease-in-out group-hover:rotate-12"
+                  className="h-5 w-5"
                 />
                 <span 
                   style={{ color: '#c1a673', fontFamily: "'Cooper BT', serif" }} 
-                  className="text-lg font-semibold"
+                  className="text-base font-semibold"
                 >
-                  {loading ? '⏳ Analyzing...' : '🚀 Start Analysis'}
+                  View JSON
                 </span>
               </button>
-            </form>
-          )}
-
-          {activeTab === 'pdf' && (
-            <form onSubmit={handlePdfSubmit} className="space-y-4">
-              <div>
-                <label 
-                  className="block text-base font-semibold mb-2 flex items-center gap-2"
-                  style={{ fontFamily: "'Cooper BT', serif", color: '#c1a673' }}
+              
+              <button
+                onClick={handleExportJSON}
+                className="flex items-center gap-2 px-6 py-2 bg-black rounded-full transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl cursor-pointer"
+              >
+                <img 
+                  src="/images/lexia_icon.png" 
+                  alt="Icon" 
+                  className="h-5 w-5"
+                />
+                <span 
+                  style={{ color: '#c1a673', fontFamily: "'Cooper BT', serif" }} 
+                  className="text-base font-semibold"
                 >
-                  <span>📁</span> Upload PDF File *
-                </label>
-                <div className="relative border-2 border-dashed border-gray-300 rounded-xl p-6 hover:border-black transition-all" style={{ backgroundColor: '#fafafa' }}>
+                  Export JSON
+                </span>
+              </button>
+            </>
+          )}
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="flex-1">
+        {/* Hero Section - Form with Loading Overlay */}
+        <section 
+          className="max-w-4xl mx-auto px-12 py-16 transition-all duration-1000 ease-out"
+          style={{
+            opacity: isPageLoaded ? 1 : 0,
+            transform: isPageLoaded ? 'scale(1)' : 'scale(0.95)',
+            transitionDelay: '0.1s'
+          }}
+        >
+          <div className="bg-white rounded-3xl shadow-2xl p-12 text-center relative overflow-hidden">
+            {/* Loading Overlay */}
+            {loading && (
+              <div 
+                className="absolute inset-0 flex items-center justify-center z-50"
+                style={{ 
+                  backgroundColor: 'rgba(230, 223, 215, 0.98)',
+                  backdropFilter: 'blur(4px)'
+                }}
+              >
+                <div className="text-center">
+                  <div className="relative inline-block mb-6">
+                    {/* Outer rotating circle */}
+                    <div 
+                      className="w-32 h-32 rounded-full border-8 animate-spin-slow"
+                      style={{ 
+                        borderColor: '#e6dfd7',
+                        borderTopColor: '#1a1a1a'
+                      }}
+                    ></div>
+                    {/* Inner icon */}
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                      <img 
+                        src="/images/lexia_icon.png" 
+                        alt="Loading" 
+                        className="h-16 w-16"
+                      />
+                    </div>
+                  </div>
+                  <p 
+                    className="text-2xl font-bold mb-2"
+                    style={{ fontFamily: "'Cooper BT', serif", color: '#c1a673' }}
+                  >
+                    Analyzing Regulation...
+                  </p>
+                  <p 
+                    className="text-base text-gray-600"
+                    style={{ fontFamily: "'Cooper BT', serif" }}
+                  >
+                    This may take 15-30 seconds
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* Form Content */}
+            <img 
+              src="/images/lexia_Logo.png" 
+              alt="Lexia Logo" 
+              className="h-16 mx-auto mb-8"
+            />
+            
+            <h1 
+              className="text-5xl font-bold mb-4"
+              style={{ fontFamily: "'Cooper BT', serif", color: '#1a1a1a' }}
+            >
+              New Compliance Analysis
+            </h1>
+            
+            <p 
+              className="text-lg text-gray-600 mb-8"
+              style={{ fontFamily: "'Cooper BT', serif" }}
+            >
+              Select your input method to begin.
+            </p>
+
+            {/* Tab Navigation */}
+            <div className="flex justify-center gap-8 mb-8 border-b-2 border-gray-200 pb-4">
+              <button
+                onClick={() => setActiveTab('manual')}
+                disabled={loading}
+                className={`text-lg font-semibold transition-all duration-300 ${
+                  activeTab === 'manual'
+                    ? 'border-b-4 border-black pb-2'
+                    : 'text-gray-400 pb-2'
+                }`}
+                style={{ 
+                  fontFamily: "'Cooper BT', serif",
+                  color: activeTab === 'manual' ? '#1a1a1a' : undefined
+                }}
+              >
+                MANUAL ENTRY
+              </button>
+              <button
+                onClick={() => setActiveTab('upload')}
+                disabled={loading}
+                className={`text-lg font-semibold transition-all duration-300 ${
+                  activeTab === 'upload'
+                    ? 'border-b-4 border-black pb-2'
+                    : 'text-gray-400 pb-2'
+                }`}
+                style={{ 
+                  fontFamily: "'Cooper BT', serif",
+                  color: activeTab === 'upload' ? '#1a1a1a' : undefined
+                }}
+              >
+                DOCUMENT UPLOAD
+              </button>
+            </div>
+
+            {/* Manual Entry Tab */}
+            {activeTab === 'manual' && (
+              <form onSubmit={handleTextSubmit} className="space-y-6">
+                <div className="text-center">
+                  <p 
+                    className="text-xl mb-6"
+                    style={{ fontFamily: "'Cooper BT', serif", color: '#1a1a1a' }}
+                  >
+                    5 years holding data customers
+                  </p>
+                  
+                  <textarea
+                    value={regulationText}
+                    onChange={(e) => setRegulationText(e.target.value)}
+                    disabled={loading}
+                    className="w-full px-6 py-4 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-black focus:border-black transition-all resize-none disabled:bg-gray-100"
+                    style={{ fontFamily: "'Cooper BT', serif", backgroundColor: '#fafafa' }}
+                    rows="6"
+                    placeholder="Enter regulation text here..."
+                    required
+                  />
+                </div>
+
+                <div className="flex items-center justify-center gap-4">
+                  <input
+                    type="date"
+                    value={dateOfLaw}
+                    onChange={(e) => setDateOfLaw(e.target.value)}
+                    disabled={loading}
+                    className="px-6 py-3 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-black focus:border-black transition-all disabled:bg-gray-100"
+                    style={{ fontFamily: "'Cooper BT', serif", backgroundColor: '#fafafa' }}
+                    placeholder="mm/dd/yyyy"
+                  />
+                  
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="px-10 py-3 bg-black text-white rounded-none transition-all duration-300 hover:bg-gray-800 disabled:bg-gray-400 cursor-pointer"
+                    style={{ fontFamily: "'Cooper BT', serif" }}
+                  >
+                    {loading ? 'ANALYZING...' : 'START ANALYSIS'}
+                  </button>
+                </div>
+              </form>
+            )}
+
+            {/* Document Upload Tab */}
+            {activeTab === 'upload' && (
+              <form onSubmit={handlePdfSubmit} className="space-y-6">
+                <div className="relative border-2 border-dashed border-gray-300 rounded-xl p-12 hover:border-black transition-all cursor-pointer" style={{ backgroundColor: loading ? '#f5f5f5' : '#fafafa' }}>
                   <input
                     type="file"
                     accept=".pdf"
                     onChange={(e) => setPdfFile(e.target.files[0])}
-                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                    disabled={loading}
+                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer disabled:cursor-not-allowed"
                     required
                   />
                   <div className="text-center">
-                    <p className="text-4xl mb-2">📤</p>
-                    <p className="text-base font-semibold" style={{ fontFamily: "'Cooper BT', serif", color: '#c1a673' }}>
+                    <p className="text-5xl mb-4">📄</p>
+                    <p 
+                      className="text-xl font-semibold mb-2" 
+                      style={{ fontFamily: "'Cooper BT', serif", color: '#1a1a1a' }}
+                    >
                       {pdfFile ? pdfFile.name : 'Click or drag file to upload'}
                     </p>
                     {pdfFile && (
-                      <p className="text-sm mt-1" style={{ color: '#c1a673' }}>
+                      <p className="text-sm text-gray-600" style={{ fontFamily: "'Cooper BT', serif" }}>
                         {(pdfFile.size / 1024 / 1024).toFixed(2)} MB
                       </p>
                     )}
                   </div>
                 </div>
-              </div>
 
-              <div>
-                <label 
-                  className="block text-base font-semibold mb-2 flex items-center gap-2"
-                  style={{ fontFamily: "'Cooper BT', serif", color: '#c1a673' }}
-                >
-                  <span>📅</span> Effective Date (Optional)
-                </label>
-                <input
-                  type="date"
-                  value={dateOfLaw}
-                  onChange={(e) => setDateOfLaw(e.target.value)}
-                  className="w-full px-5 py-3 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-black focus:border-black transition-all"
-                  style={{ fontFamily: "'Cooper BT', serif", backgroundColor: '#fafafa' }}
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={loading || !pdfFile}
-                className="group w-full flex items-center justify-center gap-3 px-8 py-4 bg-black rounded-full shadow-lg cursor-pointer transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl disabled:bg-gray-400 disabled:cursor-not-allowed"
-              >
-                <img 
-                  src="/images/lexia_icon.png" 
-                  alt="Icon" 
-                  className="h-6 w-6 transition-transform duration-300 ease-in-out group-hover:rotate-12"
-                />
-                <span 
-                  style={{ color: '#c1a673', fontFamily: "'Cooper BT', serif" }} 
-                  className="text-lg font-semibold"
-                >
-                  {loading ? '⏳ Analyzing...' : '🚀 Start Analysis'}
-                </span>
-              </button>
-            </form>
-          )}
-        </div>
-
-        {/* Loading Animation */}
-        {loading && (
-          <div className="flex flex-col items-center justify-center py-16 animate-pulse">
-            <div className="relative">
-              <div className="w-24 h-24 border-8 border-gray-300 border-t-black rounded-full animate-spin"></div>
-              <img 
-                src="/images/lexia_icon.png" 
-                alt="Loading" 
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-12 w-12"
-              />
-            </div>
-            <p 
-              className="mt-6 text-2xl font-bold"
-              style={{ fontFamily: "'Cooper BT', serif", color: '#c1a673' }}
-            >
-              Analyzing Regulation...
-            </p>
-            <p 
-              className="mt-2 text-base text-gray-600"
-              style={{ fontFamily: "'Cooper BT', serif" }}
-            >
-              This may take 15-30 seconds
-            </p>
+                <div className="flex items-center justify-center gap-4">
+                  <input
+                    type="date"
+                    value={dateOfLaw}
+                    onChange={(e) => setDateOfLaw(e.target.value)}
+                    disabled={loading}
+                    className="px-6 py-3 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-black focus:border-black transition-all disabled:bg-gray-100"
+                    style={{ fontFamily: "'Cooper BT', serif", backgroundColor: '#fafafa' }}
+                  />
+                  
+                  <button
+                    type="submit"
+                    disabled={loading || !pdfFile}
+                    className="px-10 py-3 bg-black text-white rounded-none transition-all duration-300 hover:bg-gray-800 disabled:bg-gray-400 cursor-pointer"
+                    style={{ fontFamily: "'Cooper BT', serif" }}
+                  >
+                    {loading ? 'ANALYZING...' : 'START ANALYSIS'}
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
-        )}
+        </section>
 
         {/* Error Display */}
         {error && (
-          <div 
-            className="bg-red-50 border-l-4 border-red-600 rounded-xl p-4 mb-8 shadow-md animate-fade-in"
-          >
-            <div className="flex items-start gap-3">
-              <span className="text-3xl">⚠️</span>
-              <div>
-                <h3 
-                  className="text-xl font-bold text-red-800 mb-1"
-                  style={{ fontFamily: "'Cooper BT', serif" }}
-                >
-                  Error Occurred
-                </h3>
-                <p 
-                  className="text-base text-red-700"
-                  style={{ fontFamily: "'Cooper BT', serif" }}
-                >
-                  {error}
-                </p>
+          <div className="max-w-4xl mx-auto px-12">
+            <div className="bg-red-50 border-l-4 border-red-600 rounded-xl p-6 mb-8 shadow-md">
+              <div className="flex items-start gap-3">
+                <span className="text-3xl">⚠️</span>
+                <div>
+                  <h3 
+                    className="text-xl font-bold text-red-800 mb-1"
+                    style={{ fontFamily: "'Cooper BT', serif" }}
+                  >
+                    Error Occurred
+                  </h3>
+                  <p 
+                    className="text-base text-red-700"
+                    style={{ fontFamily: "'Cooper BT', serif" }}
+                  >
+                    {error}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -528,8 +479,8 @@ function Analysis() {
 
         {/* Results Display */}
         {result && (
-          <div ref={resultsRef} className="space-y-8">
-            {/* Hero Section with Stats */}
+          <div ref={resultsRef} className="max-w-7xl mx-auto px-12 py-8 space-y-8">
+            {/* Stats Hero */}
             <div 
               data-card-id="stats-hero"
               className="bg-gradient-to-r from-white to-gray-50 rounded-2xl shadow-xl overflow-hidden transition-all duration-1000 ease-out"
@@ -628,7 +579,7 @@ function Analysis() {
               </div>
             </div>
 
-            {/* Overall Recommendation Banner */}
+            {/* Overall Recommendation */}
             <div 
               data-card-id="recommendation"
               className="bg-gradient-to-r from-black to-gray-900 rounded-2xl p-6 shadow-xl transition-all duration-1000 ease-out"
@@ -762,6 +713,51 @@ function Analysis() {
           </div>
         )}
       </main>
+
+      {/* Footer */}
+      <footer 
+        className="py-8 px-12 border-t"
+        style={{ backgroundColor: '#e6dfd7', borderColor: '#c1a673' }}
+      >
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex items-center gap-2">
+            <img
+              src="/images/lexia_Logo.png"
+              alt="Lexia"
+              className="h-12"
+            />
+            <span 
+              className="text-sm"
+              style={{ color: '#c1a673', fontFamily: "'Cooper BT', serif" }}
+            >
+              © 2025 Lexia. All rights reserved.
+            </span>
+          </div>
+          <div className="flex items-center gap-8">
+            <a 
+              href="#" 
+              className="text-sm hover:underline cursor-pointer"
+              style={{ color: '#1a1a1a', fontFamily: "'Cooper BT', serif" }}
+            >
+              Privacy Policy
+            </a>
+            <a 
+              href="#" 
+              className="text-sm hover:underline cursor-pointer"
+              style={{ color: '#1a1a1a', fontFamily: "'Cooper BT', serif" }}
+            >
+              Terms of Service
+            </a>
+            <a 
+              href="#" 
+              className="text-sm hover:underline cursor-pointer"
+              style={{ color: '#1a1a1a', fontFamily: "'Cooper BT', serif" }}
+            >
+              Contact
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }
